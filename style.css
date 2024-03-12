@@ -1,17 +1,17 @@
 /* FONTS */
 @font-face {
-	font-family: Mont-Regular;
-	src: url(./fonts/Mont-Regular.ttf);
+	font-family: 'Mont-Regular';
+	src: url('./fonts/Mont-Regular.ttf') format('truetype');
 }
 
 @font-face {
-	font-family: Mont-Bold;
-	src: url(./fonts/Mont-Bold.ttf);
+	font-family: 'Mont-Bold';
+	src: url('./fonts/Mont-Bold.ttf') format('truetype');
 }
 
 @font-face {
-	font-family: Mont-SemiBold;
-	src: url(./fonts/Mont-SemiBold.ttf);
+	font-family: 'Mont-SemiBold';
+	src: url('./fonts/Mont-SemiBold.ttf') format('truetype');
 }
 
 /* GLOBALS */
@@ -19,11 +19,11 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	font-family: Mont-Regular;
+	font-family: 'Mont-Regular', sans-serif;
 }
 
 strong {
-	font-family: Mont-Bold;
+	font-family: 'Mont-Bold', sans-serif;
 }
 
 .grey-text {
@@ -44,7 +44,7 @@ strong {
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	padding-left: 200px;
+	padding-left: 100px;
 	padding-right: 75px;
 	background: linear-gradient(to right, #229d48, #9fca4a);
 }
@@ -53,11 +53,12 @@ strong {
 	display: flex;
 	list-style-type: none;
 	padding: 0;
-	margin: 0; 
+	margin: 0;
+	justify-content: center; /* Элементы меню центрируются */
 }
 
 .menu__item:not(:first-child) {
-	padding-left: 60px;
+	margin-left: 60px;
 }
 
 .menu__item a {
@@ -69,7 +70,6 @@ strong {
 	text-decoration: underline;
 }
 
-
 .header__btn a {
 	text-decoration: none;
 	color: #fff;
@@ -79,55 +79,120 @@ strong {
 	transition: background-color 0.5s ease;
 }
 
-.header__btn a:hover{
+.header__btn a:hover {
 	background-color: #183572;
 }
 
+/* === BURGER MENU === */
+.burger-menu {
+	display: none; /* Изначально скрыто */
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 24px; /* Ширина иконки меню */
+	height: 24px; /* Высота иконки меню */
+}
+
+.burger-menu-lines {
+	background-color: #fff; /* Цвет линий */
+	height: 2px; /* Толщина линий */
+	width: 100%; /* Ширина линий */
+}
+
+@media (max-width: 768px) {
+	.header {
+			position: fixed;
+			z-index: 999;
+			padding-top: 0;
+	}
+
+	.carousel__slide-about_fond__container {
+			flex-direction: column;
+			justify-content: center;
+	}
+
+	.carousel__slide-about_fond-pic {
+			display: none;
+	}
+
+	.swiper-button__container img {
+			display: none;
+	}
+
+	.carousel__slide-about_fond-about__btn {
+			display: none;
+	}
+
+	.carousel__slide-about_fond-opportunities-events {
+			margin-top: 40px;
+	}
+
+	.burger-menu {
+			display: flex;
+	}
+
+	.header__btn {
+			padding-top: 5px;
+	}
+
+	.menu__list {
+			display: none;
+			position: absolute;
+			background-color: #8CC63F;
+			width: 100%;
+			left: 0;
+			top: 65px;
+			flex-direction: column;
+	}
+
+	.menu__list.active {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+	}
+
+	.header__btn {
+			position: absolute;
+			right: 10px;
+			top: 18px;
+	}
+}
 
 /* === MAIN === */
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center;
-  /* height: 100vh; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center; 
+	align-items: center;
 	padding-top: 70px;
 }
 
 /* === CAROUSEL === */
 .carousel {
-  width: 100%;
-  max-width: 1200px;
+	width: 100%;
+	max-width: 1200px;
 }
 
-
-
-/* .swiper-pagination {
-	margin-top: 60px;
-} */
-
 .carousel__slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
 }
 
 .carousel__slide-about_fond {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  /* text-align: center; */
-  width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
 }
 
 .carousel__slide-about_fond__container {
-  display: flex;
-  /* flex-direction: column; */
-  align-items: center; /* Center content horizontally */
-  justify-content: center; /* Center content vertically */
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .carousel__slide-about_fond-about {
@@ -145,33 +210,22 @@ main {
 	font-family: Mont-SemiBold;
 }
 
-.carousel__slide-about_fond-about,
-.carousel__slide-about_fond-pic {
-  margin: 0; /* Remove any default margin */
-}
-
 .carousel__slide-about_fond-about img {
 	width: 200px;
 	height: 50px;
 }
 
-
 .carousel__slide-about_fond-pic img {
-  /* max-width: 100%; */
-  /* height: auto;  */
 	width: 400px;
 	height: 300px;
 	padding-left: 5px;
 }
 
 .carousel__slide-about_fond-opportunities {
-	/* width: 100%; */
 	width: 1040px;
 }
 
-
 .carousel__slide-about_fond-opportunities__container {
-	/* width: 100%; */
 	display: flex;
 	justify-content: space-between;
 }
@@ -181,26 +235,19 @@ main {
 .carousel__slide-about_fond-opportunities-help {
 	padding: 20px 25px;
 	color: #fff;
-	margin-bottom: 30px;
-}
-
-.carousel__slide-about_fond-opportunities-events-title,
-.carousel__slide-about_fond-opportunities-documents-title,
-.carousel__slide-about_fond-opportunities-help-title {
-	font-family: Mont-Bold;
-	font-size: 20px;
+	border-radius: 25px;
 }
 
 .carousel__slide-about_fond-opportunities-events {
-	background-color: #1c459b;
+	background-color: #F7941E;
 }
 
 .carousel__slide-about_fond-opportunities-documents {
-	background-color: #eebc3f;	
+	background-color: #39B54A;
 }
 
 .carousel__slide-about_fond-opportunities-help {
-	background-color: #92c93b;
+	background-color: #0071BC;
 }
 
 .carousel__slide-about_fond-about__btn {
@@ -288,8 +335,75 @@ main {
 }
 
 /* === ADAPTIVE === */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .carousel__slide-about_fond__container {
     flex-direction: column;
   }
+} */
+
+/* Общие изменения для мобильных устройств */
+/* @media (max-width: 1104px) {
+	.header__container {
+		padding-left: 100px;
+	}
+}
+
+
+
+@media (max-width: 950px) {
+	.header__container {
+		padding-left: 25px;
+	}
+} */
+
+@media (max-width: 768px) {
+	.header__container {
+			/* flex-direction: column; */
+			align-items: center;
+			padding-left: 20px;
+			padding-right: 20px;
+	}
+
+	.menu__list {
+			flex-direction: column;
+			align-items: center;
+			padding-top: 10px;
+	}
+
+	.menu__item:last-child {
+		padding-bottom: 10px;
+	}
+
+	.menu__item:not(:first-child) {
+		
+			padding-left: 0;
+			padding-top: 10px;
+			margin: auto;
+	}
+
+	.carousel__slide-about_fond-opportunities__container {
+			flex-direction: column;
+	}
+
+	.carousel__slide-about_fond-pic img,
+	.carousel__slide-about_fond-about img {
+			width: 90%;
+			height: auto;
+			padding: 0;
+	}
+
+	.carousel__slide-about_fond-opportunities {
+			width: auto;
+			padding: 0 20px;
+	}
+
+	.carousel__slide-about_fond-about__btn {
+			/* width: auto; */
+			padding: 8px 10px;
+	}
+
+	.carousel__equipment img {
+			max-width: 100%;
+			height: auto;
+	}
 }
